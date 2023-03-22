@@ -1,0 +1,108 @@
+<template>
+  <div class="page" data-name="popular">
+    <div class="navbar">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner sliding">
+        <div class="title">Popular</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="row">
+        ${products.value.map((product) => $h`
+        <div class="col-100 medium-50">
+          <div class="card card-expandable" data-backdrop="false">
+            <div class="card-content">
+              <div
+                class="heading lazy lazy-fade-in"
+                style="background-image: url(${product.thumbnail})"
+              >
+                <div
+                  class="display-block title card-header text-color-white"
+                  style="width: 90%"
+                >
+                  ${product.title}<br /><small style="opacity: 0.7; width: 100%"
+                    >${product.price}$<span style="float: right"
+                      >save ${product.discountPercentage}%</span
+                    ></small
+                  >
+                </div>
+                <a
+                  class="card-opened-fade-in link icon-only color-white card-close"
+                  href="#"
+                  style="position: absolute; right: 15px; top: 15px"
+                  ><i class="icon f7-icons">xmark_circle_fill</i></a
+                >
+              </div>
+              <div class="card-content-padding">
+                <div
+                  class="display-flex justify-content-space-between align-items-center"
+                >
+                  <h2>${product.title}</h2>
+                  <div class="star-rate">
+                    <div class="on"><span class="star">★</span></div>
+                    <div class="on"><span class="star">★</span></div>
+                    <div class="on"><span class="star">★</span></div>
+                    <div class="on"><span class="star">★</span></div>
+                    <div class="on"><span class="star">★</span></div>
+                  </div>
+                </div>
+                <div class="price">
+                  <h3>${product.price}$</h3>
+                  <p>
+                    <span class="price-before"
+                      >${Math.floor( product.price + product.price /
+                      product.discountPercentage )}$ </span
+                    >save ${product.discountPercentage}%
+                  </p>
+                </div>
+                <div class="block inset block-strong">
+                  <div class="block-title">Description:</div>
+                  <p>${product.description}</p>
+                </div>
+                <div class="block inset block-strong">
+                  <div class="block-title">Brand:</div>
+                  <p>${product.brand}</p>
+                </div>
+              </div>
+              <div class="no-border card-footer">
+                <a
+                  class="button button-fill button-preloader"
+                  @click="${addToCart(product)}"
+                  href="#"
+                  style="flex: 1 1 0%"
+                  ><span class="preloader"
+                    ><span class="preloader-inner"
+                      ><svg viewBox="0 0 36 36">
+                        <circle
+                          cx="18"
+                          cy="18"
+                          r="16"
+                        ></circle></svg></span></span
+                  ><span
+                    ><i
+                      class="icon f7-icons"
+                      style="font-size: 16px; width: 16px; height: 16px"
+                      >cart_badge_plus</i
+                    >Add to cart</span
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        `)}
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default (props, { $store }) => {
+    const products = $store.getters.products;
+
+    const addToCart = (data) => {
+      $store.dispatch("addToCart", data);
+    };
+
+    return $render;
+  };
+</script>
