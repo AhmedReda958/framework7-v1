@@ -54,24 +54,23 @@
           </div>
         </div>
       </div>
-
       <!-- Views/Tabs container -->
-      <div class="views tabs safe-areas">
+      <div class="views tabs safe-areas" id="Bar">
         <!-- Tabbar for switching views-tabs -->
         <div class="toolbar toolbar-bottom tabbar-labels">
           <div class="toolbar-inner">
             <a href="#view-home" class="tab-link tab-link-active">
               <i class="icon f7-icons">house_fill</i>
-              <span class="tabbar-label">Home</span>
+              <span class="tabbar-label" id="home-icon">Home</span>
             </a>
             <a href="#view-popular" class="tab-link">
               <i class="icon f7-icons">flame</i>
-              <span class="tabbar-label">Popular</span>
+              <span class="tabbar-label" id="popular-icon">Popular</span>
             </a>
             <a href="#view-settings" class="tab-link">
               <i class="icon f7-icons if-not-md">gear</i>
               <i class="icon material-icons if-md">settings</i>
-              <span class="tabbar-label">Settings</span>
+              <span class="tabbar-label" id="settings-icon">Settings</span>
             </a>
           </div>
         </div>
@@ -114,5 +113,6 @@
     <script src="js/store.js"></script>
     <!-- App scripts -->
     <script src="js/app.js"></script>
+    <script src="js/lang.js"></script>
   </body>
 </html>
